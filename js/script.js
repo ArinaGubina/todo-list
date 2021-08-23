@@ -5,7 +5,9 @@ const todoControl = document.querySelector('.todo-control'),
     todoList = document.querySelector('.todo-list'),
     todoCompleted = document.querySelector('.todo-completed');
 
-const todoData = JSON.parse(localStorage.getItem('todoData'));
+let local = JSON.parse( localStorage.getItem('todoData') );
+const todoData = typeof(local) === 'object'? local : [];
+console.log(todoData);
 
 const render = function() {
     todoList.textContent = '';
@@ -37,6 +39,7 @@ const render = function() {
         todoRemove.addEventListener('click', function(){
             li.remove();
             todoData.splice(key, 1);
+            render();
         });
     });
 
