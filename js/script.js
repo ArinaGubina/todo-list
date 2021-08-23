@@ -51,6 +51,9 @@ const render = function() {
 todoControl.addEventListener('submit', function(event) {
     event.preventDefault();
 
+    if (headerIinput.value === '') {
+        return;
+    }
     const newTodo = {
         value: headerIinput.value,
         completed: false
